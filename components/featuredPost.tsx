@@ -3,13 +3,14 @@ import { Post } from "t-basilio-sdk";
 import Avatar from "./Avatar";
 import { transparentize } from "polished";
 import Link from "next/link";
+import formatPostDate from "../core/utils/formatPostDate";
 
 interface FeaturedPostProps {
   postSummary: Post.Summary;
 }
 
 export default function FeaturedPost(props: FeaturedPostProps) {
-  const { id, slug } = props.postSummary
+  const { id, slug } = props.postSummary;
 
   return (
     <Link legacyBehavior href={`/posts/${id}/${slug}`} passHref>
@@ -25,7 +26,7 @@ export default function FeaturedPost(props: FeaturedPostProps) {
             <Avatar src={props.postSummary.editor.avatarUrls.small} />
             <EditorDescriptor>
               <EditorName>{props.postSummary.editor.name}</EditorName>
-              <PostDate>ha 3 dias</PostDate>
+              <PostDate>{formatPostDate(props.postSummary.createdAt)}</PostDate>
             </EditorDescriptor>
           </Editor>
           <Title>{props.postSummary.title}</Title>

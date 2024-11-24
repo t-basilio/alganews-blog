@@ -1,5 +1,5 @@
 import Head from "next/head";
-import FeaturedPost from "../components/featuredPost";
+import FeaturedPost from "../components/FeaturedPost";
 import { Post, PostService } from "t-basilio-sdk";
 import { GetServerSideProps } from "next";
 import { ServerResponse } from "http";
@@ -56,9 +56,9 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
   { res, query}
 ) => {
   
-
   const { page: _page } = query;
-  const page = Number(_page);
+
+  const page = _page ? Number(_page) : 1;
 
   if (isNaN(page) || page < 1) {
     return sendToHomePage(res)

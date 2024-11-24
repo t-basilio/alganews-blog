@@ -3,6 +3,7 @@ import Link from "next/link";
 import { transparentize } from "polished";
 import { styled } from "styled-components";
 import { Post } from "t-basilio-sdk";
+import formatPostDate from "../core/utils/formatPostDate";
 
 interface PostCardProps {
   post: Post.Summary;
@@ -23,7 +24,7 @@ export default function PostCard(props: PostCardProps) {
               height={64}
             />
           </Editor>
-          <PublishDate>ha 3 dias</PublishDate>
+          <PublishDate>{ formatPostDate(post.createdAt)}</PublishDate>
           <Title>{post.title}</Title>
         </Info>
       </Wrapper>
@@ -109,7 +110,7 @@ const Wrapper = styled.a`
       ${(p) => transparentize(0.7, p.theme.primaryBackground)};
 
     outline: none;
-
+    
     * {
       color: ${(p) => p.theme.primaryForeground};
     }

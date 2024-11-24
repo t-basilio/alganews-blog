@@ -1,26 +1,27 @@
 import { styled } from "styled-components";
 import { FOOTER_HEIGHT, HEADER_HEIGHT } from "../_constants";
 import Image from "next/image";
-import NotFoundImage from "../public/not_found.svg";
+import ServerErrorImage from "../public/server_error.svg";
 import Link from "next/link";
 import Head from "next/head";
 
 export default function NotFound() {
   return (
-    <Wrapper>
-      <Head>
-        <title>Página não encontrada - 404</title>
-      </Head>
+      <Wrapper>
+          <Head>
+              <title>Erro interno - 500</title>
+          </Head>
       <Image
-        src={NotFoundImage}
+        src={ServerErrorImage}
         width={300}
         height={300}
         objectFit="contain"
         alt="não encontrado"
       />
-      <h1>Página não encontrada</h1>
+      <h1>Erro interno</h1>
+      <p>O estagiário desconectou um cabo errado</p>
       <Link legacyBehavior href={"/"} passHref>
-        <BackToHome>Voltar para a home</BackToHome>
+        <BackToHome>Tentar acessar a Home</BackToHome>
       </Link>
     </Wrapper>
   );
